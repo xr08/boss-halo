@@ -1,0 +1,62 @@
+/* ==========================================================================
+   Base Architecture & Color Management
+   ========================================================================== */
+:root {
+    --color-brand-charcoal: #2a2a2a;
+    --color-brand-obsidian: #141414;
+    
+    /* Configurable Fallback State (Boss Orange) */
+    --current-brand-color: #ff5722;
+    --current-brand-glow: rgba(255, 87, 34, 0.25);
+}
+
+/* Custom Multi-Brand Overrides applied dynamically via body tags */
+body[data-theme="ford"] {
+    --current-brand-color: #003399;
+    --current-brand-glow: rgba(0, 51, 153, 0.35);
+}
+body[data-theme="holden"] {
+    --current-brand-color: #e4002b;
+    --current-brand-glow: rgba(228, 0, 43, 0.35);
+}
+
+/* Base Body Framework layout defaults */
+body {
+    background-color: var(--color-brand-obsidian);
+    letter-spacing: 0.04em;
+}
+
+.tracking-wider { letter-spacing: 0.2em; }
+.tracking-wide { letter-spacing: 0.1em; }
+.fw-black { font-weight: 900; }
+
+/* ==========================================================================
+   Elementor Mimic Elements
+   ========================================================================== */
+
+/* Flat High-Performance Core Boxes */
+.muscle-box {
+    background-color: var(--color-brand-charcoal);
+    /* Strict 0.5px thin hairline layout target borders */
+    border: 0.5px solid var(--current-brand-color) !important; 
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.muscle-box:hover {
+    transform: translateY(-5px);
+    border-color: #ffffff !important; /* Contrasting hover rule */
+    box-shadow: 0 8px 24px var(--current-brand-glow);
+}
+
+/* Call to Action Accent Match styling */
+.btn-brand-cta {
+    background-color: var(--current-brand-color);
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-brand-cta:hover {
+    background-color: #ffffff;
+    color: #000000 !important;
+    box-shadow: 0 0 15px var(--current-brand-color);
+}
