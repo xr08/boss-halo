@@ -60,3 +60,45 @@ body {
     color: #000000 !important;
     box-shadow: 0 0 15px var(--current-brand-color);
 }
+
+/* ==========================================================================
+   Motion Control & Component Enhancements
+   ========================================================================== */
+
+/* Target the SVGs inside your icon wrapper wrappers */
+.muscle-icon {
+    color: var(--current-brand-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Modify icon position when a parent box wrapper is focused or hovered */
+.muscle-box:hover .muscle-icon {
+    color: var(--color-brand-white);
+    transform: scale(1.1) rotate(-3deg);
+}
+
+/* --- Entry Motion Presets (Invisible by default) --- */
+.panel-reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Control initial offset layout constraints individually */
+.panel-reveal[data-motion="left"] {
+    transform: translateX(-50px) skewX(-3deg);
+}
+.panel-reveal[data-motion="up"] {
+    transform: translateY(50px);
+}
+.panel-reveal[data-motion="right"] {
+    transform: translateX(50px) skewX(3deg);
+}
+
+/* Activated State — Fired synchronously via Javascript scroll hooks */
+.panel-reveal.is-active {
+    opacity: 1;
+    transform: translateX(0) translateY(0) skewX(0);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
